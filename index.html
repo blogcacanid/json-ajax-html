@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ajax Corona</title>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous">
+</script>
+</head>
+<body>
+	<p id="tanggal"></p>
+	<h1>Negara : <span id="name"></span></h1>
+	<h1>Positif : <span id="positif"></span></h1>
+	<h1>Sembuh : <span id="sembuh"></span></h1>
+	<h1>Meninggal : <span id="meninggal"></span></h1>
+	<script>
+		$(document).ready(function(){
+			//alert('Saya dieksekusi');
+			$.ajax({
+				url : "https://api.kawalcorona.com/indonesia/",
+				success: function(result){
+					console.log(result);
+					$("#name").text(result[0].name);
+					$("#positif").text(result[0].positif);
+					$("#sembuh").text(result[0].sembuh);
+					$("#meninggal").text(result[0].meninggal);
+				}
+			})
+		});
+	</script>
+</body>
+</html>
